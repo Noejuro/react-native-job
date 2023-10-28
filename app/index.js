@@ -7,6 +7,7 @@ import { Nearbyjobs, Popularjobs, ScreenHeaderBtn, Welcome  } from '../component
 
 const Home = () => {
     const router = useRouter();
+    const [searchTerm, setSearchTerm] = useState("")
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
@@ -17,7 +18,7 @@ const Home = () => {
                     },
                     headerShadowVisible: false,
                     headerLeft: ()=> (
-                        <ScreenHeaderBtn iconUrl={icons.menu} dimension='60%' />
+                        <ScreenHeaderBtn iconUrl={icons.menu} dimension='60%' handlePress={() => router.push(`/location`)} />
                     ),
                     headerRight: ()=> (
                         <ScreenHeaderBtn iconUrl={images.profile} dimension='100%' />
@@ -31,7 +32,15 @@ const Home = () => {
                     flex: 1, 
                     padding: SIZES.medium
                 }}>
-                    <Welcome />
+                    <Welcome 
+                        searchTerm={searchTerm}
+                        setSearchTerm={setSearchTerm}
+                        handleClick={() => {
+                            if(searchTerm) {
+                                router.push(`/search/${searchTerm}`)
+                            }
+                        }}
+                    />
                     <Popularjobs />
                     <Nearbyjobs />
                 </View>

@@ -5,9 +5,29 @@
       "bundler": "metro"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      [
+        "expo-calendar",
+        {
+          "calendarPermission": "The app needs to access your calendar."
+        }
+      ]
     ],
     "name": "react_native_jobs",
-    "slug": "react_native_jobs"
+    "slug": "react_native_jobs",
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "44ecb8ba-9b31-4def-8264-20436bb384b6"
+      }
+    },
+    "android": {
+      "package": "com.noejuro.react_native_jobs"
+    },
+    "ios": {
+      "bundleIdentifier": "noe.juarez.react.native.jobs"
+    }
   }
 }
